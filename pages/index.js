@@ -5,11 +5,11 @@ import { useRouter } from 'next/router';
 import Layout from 'components/Layout';
 
 const Home = () => {
-  const {locale} = useRouter();
+  // const {locale} = useRouter();
   return (
     <Layout>
       Home page
-      <Link href={"/lecturers"} locale={locale}>Link to Lecturers page</Link>
+      <Link href={"/lecturers"}>Link to Lecturers page</Link>
     </Layout>
   )
 }

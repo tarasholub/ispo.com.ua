@@ -1,6 +1,10 @@
+import Link from 'next/link';
+
 const Header = () => {
   return (
-    <header>header</header>
+    <header>
+      <Link href={"/"}>HOME</Link>
+    </header>
   )
 }
 
