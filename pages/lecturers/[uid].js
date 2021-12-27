@@ -1,6 +1,7 @@
 import * as prismic from '@prismicio/client';
-import {RichText} from 'prismic-reactjs';
+import { RichText } from 'prismic-reactjs';
 import Link from 'next/link';
+import Image from 'next/image';
 
 // Components
 import Layout from 'components/Layout';
@@ -32,14 +33,20 @@ export async function getStaticPaths({locale}) {
 }
 
 const Lecturer = ({ lecturer }) => {
+  if (!lecturer) {
+    console.log('loading...');
+    return <span>loading...</span>;
+  }
+
   const {data: lecturerData} = lecturer || {};
-  const {title, description} = lecturerData || {};
+  const {title, description, main_image: mainImage} = lecturerData || {};
+  const {url, alt} = mainImage || {};
 
   return (
     <Layout>
       <Styled.LecturerWrapper>
         {title && RichText.render(title)}
-        <hr/>
+        {mainImage && <Image src={url} alt={alt} width={500} height={500}/>}
         {description && RichText.render(description)}
       </Styled.LecturerWrapper>
     </Layout>
