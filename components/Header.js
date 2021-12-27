@@ -9,7 +9,9 @@ import * as Styled from 'styles/header.styled';
 const Header = () => {
   return (
     <Styled.HeaderWrapper>
-      <Link href={"/"}>HOME</Link>
+      <Link href={"/"}>
+        <Styled.HeaderLogo>HOME</Styled.HeaderLogo>
+      </Link>
       <LanguageSwitcher/>
     </Styled.HeaderWrapper>
   )
