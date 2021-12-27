@@ -5,6 +5,9 @@ import Head from 'next/head';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 
+// Styles
+import * as Styled from 'styles/layout.styled';
+
 const Layout = ({ children }) => {
   return (
     <>
@@ -13,8 +16,8 @@ const Layout = ({ children }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header/>
-      <main>{children}</main>
-      <Footer/>
+      <Styled.LayoutWrapper>{children}</Styled.LayoutWrapper>
+      {/*<Footer/>*/}
     </>
   )
 }
