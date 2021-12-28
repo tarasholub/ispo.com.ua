@@ -1,17 +1,26 @@
-import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { useEffect, useState } from "react";
+import Link from "next/link";
 
 // Components
-import Layout from 'components/Layout';
+import Layout from "components/Layout";
 
 const Home = () => {
-  // const {locale} = useRouter();
+  const [hasMounted, setHasMounted] = useState(false);
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  if (!hasMounted) {
+    return null;
+  }
+
   return (
-    <Layout>
-      Home page
+    <Layout title="Homepage">
+      <h1>Homepage</h1>
       <Link href={"/lecturers"}>Link to Lecturers page</Link>
     </Layout>
-  )
-}
+  );
+};
 
 export default Home;

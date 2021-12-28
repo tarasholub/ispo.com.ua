@@ -1,6 +1,9 @@
+// Styles
+import * as Styled from 'styles/footer.styled';
+
 const Footer = () => {
   return (
-    <footer>footer</footer>
+    <Styled.FooterWrapper>footer</Styled.FooterWrapper>
   )
 }
 

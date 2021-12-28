@@ -1,26 +1,22 @@
-import React from 'react';
-import Head from 'next/head';
+import React from "react";
 
 // Components
-import Header from 'components/Header';
-import Footer from 'components/Footer';
+import SEO from "components/Seo";
+import Header from "components/Header";
+import Footer from "components/Footer";
 
 // Styles
-import * as Styled from 'styles/layout.styled';
+import * as Styled from "styles/layout.styled";
 
-const Layout = ({ children }) => {
+const Layout = ({ children, title }) => {
   return (
     <>
-      <Head>
-        <title>Test web app</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Header/>
+      <SEO title={title} />
+      <Header />
       <Styled.LayoutWrapper>{children}</Styled.LayoutWrapper>
-      {/*<Footer/>*/}
+      <Footer />
     </>
-  )
-}
+  );
+};
 
 export default Layout;
-
