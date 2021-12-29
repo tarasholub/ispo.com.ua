@@ -10,7 +10,7 @@ import Layout from "components/Layout";
 // Styles
 import * as Styled from "styles/lecturers.styled";
 
-const Lecturers = ({ lecturers }) => {
+const Lecturers = ({ lecturers, settings }) => {
   const [hasMounted, setHasMounted] = useState(false);
   const { locale } = useRouter();
 
@@ -21,9 +21,10 @@ const Lecturers = ({ lecturers }) => {
   if (!hasMounted) {
     return null;
   }
+  const { data: settingsData } = settings || {};
 
   return (
-    <Layout title="Lecturers page">
+    <Layout title="Lecturers page" settings={settingsData}>
       <h1>Lecturers page</h1>
       <Styled.LecturersList>
         {lecturers.map((lecturer) => {
@@ -46,10 +47,14 @@ export async function getStaticProps({ locale }) {
   const endpoint = prismic.getEndpoint(process.env.PRISMIC_ENDPOINT);
   const client = prismic.createClient(endpoint);
   const lecturers = await client.getAllByType("lecturer", { lang: locale });
+  const settings = await client.getByUID("site_settings", "site-values", {
+    lang: locale,
+  });
 
   return {
     props: {
       lecturers: lecturers || [],
+      settings: settings || [],
     },
   };
 }

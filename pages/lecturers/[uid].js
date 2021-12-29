@@ -9,7 +9,7 @@ import Layout from "components/Layout";
 // Styles
 import * as Styled from "styles/lecturer.styled";
 
-const Lecturer = ({ lecturer }) => {
+const Lecturer = ({ lecturer, settings }) => {
   const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
@@ -20,12 +20,13 @@ const Lecturer = ({ lecturer }) => {
     return null;
   }
 
+  const { data: settingsData } = settings || {};
   const { data: lecturerData } = lecturer || {};
   const { title, description, main_image: mainImage } = lecturerData || {};
   const { url, alt } = mainImage || {};
 
   return (
-    <Layout title={RichText.asText(title)}>
+    <Layout title={RichText.asText(title)} settings={settingsData}>
       <Styled.LecturerWrapper>
         {title && RichText.render(title)}
         {url && <Image src={url} alt={alt} width={500} height={500} />}
@@ -41,10 +42,14 @@ export async function getStaticProps({ params, locale }) {
   const lecturer = await client.getByUID("lecturer", params.uid, {
     lang: locale,
   });
+  const settings = await client.getByUID("site_settings", "site-values", {
+    lang: locale,
+  });
 
   return {
     props: {
       lecturer: lecturer || {},
+      settings: settings || [],
     },
   };
 }
