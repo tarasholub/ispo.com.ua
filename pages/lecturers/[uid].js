@@ -49,10 +49,10 @@ export async function getStaticProps({ params, locale }) {
   };
 }
 
-export async function getStaticPaths({ locale }) {
+export async function getStaticPaths() {
   const endpoint = prismic.getEndpoint(process.env.PRISMIC_ENDPOINT);
   const client = prismic.createClient(endpoint);
-  const lecturers = await client.getAllByType("lecturer", { lang: locale });
+  const lecturers = await client.getAllByType("lecturer");
 
   return {
     paths: lecturers?.map((node) => `/lecturers/${node.uid}`) || [],
