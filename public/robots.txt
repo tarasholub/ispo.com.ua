@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://ispo.com.ua
+
+# Sitemaps
+Sitemap: https://ispo.com.ua/sitemap.xml

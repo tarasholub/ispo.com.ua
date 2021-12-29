@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 module.exports = {
-  apiEndpoint: `https://${process.env.PRISMIC_ENDPOINT}.cdn.prismic.io/api/v2`,
+  apiEndpoint: 'https://test-one-lang.cdn.prismic.io/api/v2',
   accessToken: process.env.PRISMIC_ACCESS_TOKEN,
   linkResolver: (doc) => {
     if (doc.type === 'lecturer') {

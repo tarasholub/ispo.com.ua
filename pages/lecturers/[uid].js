@@ -20,16 +20,16 @@ const Lecturer = ({ lecturer }) => {
     return null;
   }
 
-  const { data: lecturerData } = lecturer;
-  const { title, description, main_image: mainImage } = lecturerData;
-  const { url, alt } = mainImage;
+  const { data: lecturerData } = lecturer || {};
+  const { title, description, main_image: mainImage } = lecturerData || {};
+  const { url, alt } = mainImage || {};
 
   return (
     <Layout title={RichText.asText(title)}>
       <Styled.LecturerWrapper>
-        <RichText render={title} />
-        <Image src={url} alt={alt} width={500} height={500} />
-        <RichText render={description} />
+        {title && RichText.render(title)}
+        {url && <Image src={url} alt={alt} width={500} height={500} />}
+        {title && RichText.render(description)}
       </Styled.LecturerWrapper>
     </Layout>
   );
