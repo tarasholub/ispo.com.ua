@@ -25,6 +25,7 @@ const SEO = ({ title = "App name", color = null }) => {
       <meta property="og:type" content="website" />
       <meta property="og:locale" content="language" />
       <link rel="icon" href="/favicon.ico" />
+      <link rel="shortcut icon" href="/favicon.ico"></link>
       {color && <meta name="theme-color" content={color} />}
 
       {locales.map((node) => {
