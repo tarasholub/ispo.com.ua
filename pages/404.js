@@ -8,7 +8,7 @@ const Custom404 = ({ settings}) => {
   const { data: settingsData } = settings || {};
 
   return (
-    <Layout title="Page not found" settings={settingsData}>
+    <Layout title="Page not found" settings={settingsData} noindex>
       <h1>Custom 404</h1>
       <Link href={"/"}>Link to Homepage</Link>
     </Layout>

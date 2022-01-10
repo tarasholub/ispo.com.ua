@@ -2,8 +2,8 @@ import React from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
-const SEO = ({ title = "App name", color = null }) => {
-  const { locales, pathname, query } = useRouter();
+const SEO = ({ title = "App name", color = null, noindex }) => {
+  const { locale, locales, pathname, query } = useRouter();
   const { uid } = query;
   const path = pathname.replace("[uid]", uid);
 
@@ -20,13 +20,14 @@ const SEO = ({ title = "App name", color = null }) => {
         property="og:description"
         content="Complete description of the content showed in this sample page for Open Graph."
       />
-      <meta property="og:image" content="/favicon.ico" />
+      <meta property="og:image" content="" />
       <meta property="og:url" content="https://mydomain.com/" />
       <meta property="og:type" content="website" />
-      <meta property="og:locale" content="language" />
+      <meta property="og:locale" content={locale} />
       <link rel="icon" href="/favicon.ico" />
       <link rel="shortcut icon" href="/favicon.ico"></link>
       {color && <meta name="theme-color" content={color} />}
+      {noindex && <meta name="robots" content="noindex" />}
 
       {locales.map((node) => {
         const siteUrl = "https://ispo.com.ua/";

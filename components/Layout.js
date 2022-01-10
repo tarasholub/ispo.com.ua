@@ -8,12 +8,12 @@ import Footer from "components/Footer";
 // Styles
 import * as Styled from "styles/layout.styled";
 
-const Layout = ({ children, title, settings }) => {
+const Layout = ({ children, title, settings, noindex = false }) => {
   const { primary_color: primaryColor } = settings || {};
 
   return (
     <>
-      <SEO title={title} color={primaryColor} />
+      <SEO title={title} color={primaryColor} noindex={noindex} />
       <Header />
       <Styled.LayoutWrapper>{children}</Styled.LayoutWrapper>
       <Footer />
